@@ -146,41 +146,41 @@ Systolic Parallel  [=                                                 ]    48
 
 ## Repository Structure
 
-```
-gpu-parallel-matrix-accelerator-riscv/
-├── rtl/
-│   ├── core/
-│   │   ├── riscv_coproc_if.sv       # RISC-V Instruction Decode & CSR Interface
-│   │   └── accelerator_top.sv       # Top-level Accelerator & Memory Wrapper
-│   ├── accelerator/
-│   │   ├── processing_element.sv    # Configurable INT8/INT16/INT32 MAC Unit
-│   │   ├── systolic_array.sv        # Parametric 2D Mesh with Dataflow Routing
-│   │   ├── matrix_buffer.sv         # Input/Weight Skew FIFOs & Output Buffers
-│   │   └── accelerator_controller.sv# Main FSM (Load, Stream, Compute, Drain)
-│   └── memory/
-│       ├── scratchpad_memory.sv     # Banked Dual-Port SRAM for Activations/Weights
-│       └── dma_engine.sv            # DMA Controller for Burst Memory Transfers
-├── tb/
-│   ├── uvm/
-│   │   ├── matrix_if.sv             # Interface with SVA Protocol & Handshake Checkers
-│   │   ├── matrix_seq_item.sv       # Constrained-Random Transaction Class
-│   │   ├── matrix_sequence.sv       # Sequence Suite (Corner-case, Burst, Overflow)
-│   │   ├── matrix_driver.sv         # Cycle-Accurate Driver
-│   │   ├── matrix_monitor.sv        # Non-Intrusive Output Monitor
-│   │   ├── matrix_scoreboard.sv     # Golden Matrix Multiply Reference Checker
-│   │   ├── matrix_coverage.sv       # Functional Coverage Model (98%+ Target)
-│   │   └── matrix_env.sv            # UVM Environment integrating VIP
-│   └── tb_top.sv                    # Top-Level Verification Harness
-├── benchmark/
-│   ├── cpu_baseline/
-│   │   └── matmul_scalar.c          # Pure Software C/Assembly Baseline
-│   └── seq_rtl/
-│       └── matmul_sequential.v      # Single-Multiplier Sequential RTL Baseline
-├── LICENSE                          # MIT License
-└── README.md                        # Project Documentation
-```
+                            ```
+                            gpu-parallel-matrix-accelerator-riscv/
+                            ├── rtl/
+                            │   ├── core/
+                            │   │   ├── riscv_coproc_if.sv       # RISC-V Instruction Decode & CSR Interface
+                            │   │   └── accelerator_top.sv       # Top-level Accelerator & Memory Wrapper
+                            │   ├── accelerator/
+                            │   │   ├── processing_element.sv    # Configurable INT8/INT16/INT32 MAC Unit
+                            │   │   ├── systolic_array.sv        # Parametric 2D Mesh with Dataflow Routing
+                            │   │   ├── matrix_buffer.sv         # Input/Weight Skew FIFOs & Output Buffers
+                            │   │   └── accelerator_controller.sv# Main FSM (Load, Stream, Compute, Drain)
+                            │   └── memory/
+                            │       ├── scratchpad_memory.sv     # Banked Dual-Port SRAM for Activations/Weights
+                            │       └── dma_engine.sv            # DMA Controller for Burst Memory Transfers
+                            ├── tb/
+                            │   ├── uvm/
+                            │   │   ├── matrix_if.sv             # Interface with SVA Protocol & Handshake Checkers
+                            │   │   ├── matrix_seq_item.sv       # Constrained-Random Transaction Class
+                            │   │   ├── matrix_sequence.sv       # Sequence Suite (Corner-case, Burst, Overflow)
+                            │   │   ├── matrix_driver.sv         # Cycle-Accurate Driver
+                            │   │   ├── matrix_monitor.sv        # Non-Intrusive Output Monitor
+                            │   │   ├── matrix_scoreboard.sv     # Golden Matrix Multiply Reference Checker
+                            │   │   ├── matrix_coverage.sv       # Functional Coverage Model (98%+ Target)
+                            │   │   └── matrix_env.sv            # UVM Environment integrating VIP
+                            │   └── tb_top.sv                    # Top-Level Verification Harness
+                            ├── benchmark/
+                            │   ├── cpu_baseline/
+                            │   │   └── matmul_scalar.c          # Pure Software C/Assembly Baseline
+                            │   └── seq_rtl/
+                            │       └── matmul_sequential.v      # Single-Multiplier Sequential RTL Baseline
+                            ├── LICENSE                          # MIT License
+                            └── README.md                        # Project Documentation
+                            ```
 
----
+                            ---
 
 ## License
 This project is open-source under the MIT License.
